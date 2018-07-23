@@ -24,10 +24,14 @@ export default {
         }
     },
     methods: {
-        deleteProduct(id) {
+        deleteProduct(item) {
             __delete = async () => {
                 try {
-                    await ItemsService.deleteProduct(id);
+                    await ItemsService.deleteProduct(item.item._id);
+                    let filtered = this.items.filter((el) => {
+                        return el._id !== item.item._id
+                    })
+                    this.items = filtered
                     this.showAlert('success', 'Se borro correctamente')                    
                 }
                 catch(error) {
@@ -39,7 +43,7 @@ export default {
         },
         getSwipeRightComponent: function(item) {
             return (
-                <Button danger onPress={()=> {this.deleteProduct(item.item._id)}}>
+                <Button danger onPress={()=> {this.deleteProduct(item)}}>
                 <Icon active leftOpenValue name="trash" />
                 </Button>
             );

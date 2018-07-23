@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       activePage: 0,
-      data: []
+      data: [],
     }
   },
   methods: {
@@ -64,15 +64,11 @@ export default {
     refreshData() {
       _retrieveData = async () => {
         try {
-            // const values = await AsyncStorage.getItem('items');
             const values = await ItemsService.fetchProducts();
-            
             if (values !== null) {
                 this.data = values.data
-                console.log(this.data)
             }
         } catch (error) {
-            // Error retrieving data
             console.log(error)
         }
       }
