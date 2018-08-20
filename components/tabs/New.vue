@@ -55,7 +55,7 @@ export default {
                     this.loading = false                   
                 } catch (error) {
                     this.onError()
-                    console.warn(error)
+                    console.log(error)
                     this.loading = false
                 }
             }
@@ -81,9 +81,3 @@ export default {
     }
 }
 </script>
-
-<style>
-.sendView {
-    margin-top: 20px;
-}
-</style>
